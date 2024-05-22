@@ -23,6 +23,7 @@
             letter-spacing: 10px;
             color: white;
             margin: 30px 0px 40px 0px;
+            text-shadow: 5px 2px 3px black;
         }
         .conteiner{
             background-color: #6e2e03;
@@ -69,6 +70,11 @@
             color: red;
             font-size: 20px;
         }
+        .radius{
+            display: flex;
+            color: white;
+            gap: 20px;
+        }
 
         @media screen and (min-width:300px){
             
@@ -91,15 +97,15 @@
     <h1>Trailer da Avenida</h1>
 
     <div class="conteiner">
-        <form id="form">
-
+        <form  action="" method="post" id="form">
             <p id="erro"></p>
-            <select id="usuario" class="campo">
-                <option value="adm"> Administrador </option>
-                <option value="funcionario"> Funcionario </option>
-                <input type="password" id="senha" class="campo">
-            </selected>
-            <button class="butao" type="submit" > ACESSAR </button>
+            
+
+            <input class="campo" type="text" id="usuario" name="usuario" placeholder="Digite seu usuário">
+            <input class="campo" type="password" id="senha" name="senha" placeholder="Digites sua senha">
+            
+            <button class="butao" type="submit" id="submit" name="submit"> ACESSAR </button>
+
         </form>
     </div>
     
@@ -109,12 +115,14 @@
             function(event) {
                 event.preventDefault();
 
+            
             var usuario = document.getElementById("usuario").value;
-            var senha = document.getElementById("senha").value;
-
-            if(usuario === 'adm' && senha === 'adm123') {
+            var senha = document.getElementById("senha").value; 
+                       
+           
+            if( usuario === 'adm' && senha === 'adm123' ) {
                 window.location.href = "Central_adm.php";
-            } else if (usuario === 'funcionario' && senha === 'trailer123') {
+            } else if (usuario === 'Garçon' && senha === 'trailer123') {
                 window.location.href = "Trailer_da_avenida.html";
             } else {
                 document.getElementById("erro").innerHTML = "Credenciais inválidas";
