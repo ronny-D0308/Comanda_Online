@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -50,9 +52,6 @@
             color: white;
             font-size: 20px;
         }
-        select option {
-            color:black;
-        }
        
         .butao{
             height: 35px;
@@ -70,8 +69,9 @@
             color: red;
             font-size: 20px;
         }
-        .radius{
+        .radio{
             display: flex;
+            flex-direction: row;
             color: white;
             gap: 20px;
         }
@@ -97,41 +97,22 @@
     <h1>Trailer da Avenida</h1>
 
     <div class="conteiner">
-        <form  action="" method="post" id="form">
-            <p id="erro"></p>
+        <form  action="acesso.php" method="POST" id="form">
             
+            <span class="radio">
+                <label >Administrador</label>
+                <input type="radio" value="administrador" name="administrador">
+                <label >Funcionário</label>
+                <input type="radio" value="funcionario" name="funcionario">
+            </span>
 
-            <input class="campo" type="text" id="usuario" name="usuario" placeholder="Digite seu usuário">
-            <input class="campo" type="password" id="senha" name="senha" placeholder="Digites sua senha">
+            <input class="campo" type="text" id="usuario" name="usuario" id="usuario" placeholder="Digite seu usuário">
+            <input class="campo" type="password" id="senha" name="senha" id="senha" placeholder="Digites sua senha">
             
             <button class="butao" type="submit" id="submit" name="submit"> ACESSAR </button>
 
         </form>
     </div>
-    
-
-    <script>
-        document.getElementById("form").addEventListener('submit',
-            function(event) {
-                event.preventDefault();
-
-            
-            var usuario = document.getElementById("usuario").value;
-            var senha = document.getElementById("senha").value; 
-                       
-           
-            if( usuario === 'adm' && senha === 'adm123' ) {
-                window.location.href = "Central_adm.php";
-            } else if (usuario === 'Garçon' && senha === 'trailer123') {
-                window.location.href = "Trailer_da_avenida.html";
-            } else {
-                document.getElementById("erro").innerHTML = "Credenciais inválidas";
-            }
-            }
-            
-        )
-
-    </script>
     
 </body>
 </html>
