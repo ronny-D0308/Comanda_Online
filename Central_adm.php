@@ -1,4 +1,10 @@
 <?php   
+        session_start();
+
+        if(!isset($_SESSION["leggedin"]) || $_SESSION["leggedin"] !== true) {
+            
+        }
+
         $bdhost = 'localhost';
         $bdUsername = 'root';
         $bdPassword = '';
@@ -9,7 +15,9 @@
         if($conn -> connect_error) {
         die("Conexão falhou: ". $conn -> connect_error);
         }
+
 ?>
+
 
 <html lang="pt-BR">
 <head>
@@ -76,6 +84,18 @@
             height:700px;
             margin:0 auto;
         }
+        #printFrame{
+            display:none;
+        }
+        #imprimir{
+            background: transparent;
+            border: none;
+            
+        }
+        #butao_impressao{
+            text-align:center;
+            margin-top:20px;
+        }
     </style>
 
 </head>
@@ -98,7 +118,7 @@
 
 
         <!--PROCESSAMENTO DOS DADOS-->
-            <span class="conteiner_tabela">
+            <span class="conteiner_tabela"  id="clientes">
                 <?php
                     if(isset($_GET['busca'])) : ?>
                         <table class="tabela">
@@ -111,14 +131,14 @@
                             <?php
                             $nome = $_GET['busca'];
 
-                            $comanda = "SELECT Nome, Garcon, Numero_mesa, Valor_comanda FROM cliente
-                    WHERE Nome LIKE '%$nome%'  ";
+                            $comanda = "SELECT Nome_cliente, Garcon, Numero_mesa, Valor_comanda FROM cliente
+                    WHERE Nome_cliente LIKE '%$nome%'  ";
 
                             $result = $conn->query($comanda);
 
                             if($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo "<tr><td>" . $row["Nome"]."</td><td>" . 
+                                    echo "<tr><td>" . $row["Nome_cliente"]."</td><td>" . 
                                     $row["Garcon"]. "</td><td>"  . 
                                     $row["Numero_mesa"]. "</td><td>" .
                                     $row["Valor_comanda"]. "</td></tr>";
@@ -133,6 +153,27 @@
                 </table>
                 <?php endif;?>
             </span>
+                
+            <div id="butao_impressao">
+                <iframe id="printFrame" name="printFrame"> </iframe>
+
+                    <button type="submit" id="imprimir" onClick="impressao()"> <img src="imagens/impressora.png"> </button>
+
+                        <script>
+                            function impressao() {
+                                var tabela = document.getElementById('clientes').innerHTML;
+                                var print =  document.getElementById('printFrame').contentWindow;
+
+                                printFrame.document.open();
+
+                                printFrame.document.write('<html><head><title>Print</title></head><body>' + tabela +'</body></html>');
+
+                                print.document.close();
+                                print.focus();
+                                print.print();
+                            }
+                    </script>
+                </div>
     </section>
 
 
@@ -184,7 +225,14 @@
 
                 </table>
                 <?php endif;?>
+
             </span>
+            
+            <div class="butoes">
+                <button id="excluir" name="excluir"> EXCLUIR </button>
+                <button id="alterar" name="excluir"> ALTERAR </button>
+                <button></button>
+            </div>
     </section>
     
 
@@ -222,39 +270,6 @@
 
                 ?>
 
-
-            <div id="grafico">
-                <canvas id="myChart"></canvas>
-                </div>
-
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                <script>
-                    const ctx = document.getElementById('myChart');
-
-                    var total = <?php echo json_encode($total); ?>
-
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                    labels: [ 'Clientes atendido' , 'Receita'],
-                    color:'#060606',
-                    datasets: [{
-                        label: 'valores',
-                        data: [30, total],
-                        borderWidth: 1,
-                        backgroundColor: '#B7B1AE'
-                    }]
-                    },
-                    options: {
-                    scales: {
-                        y: {
-                        beginAtZero: true
-                        }
-                    }
-                    }
-                });
-        </script>
     </section>
 </body>
 </html>
