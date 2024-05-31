@@ -1,5 +1,12 @@
-<DOCTYPE! html>
+<?php
+session_start();
 
+if(!isset($_SESSION["leggedin"]) || $_SESSION["leggedin"] !== true) {
+	
+}
+?>
+
+<DOCTYPE! html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -159,13 +166,28 @@
 					<input class="QUANT" type="number" id="A2" >
 				</div>
 			</div>
+	<hr>
+
+		<!--CAMPOS DOS PETISCOS-->	
+
+		<h1 class="itens">Petiscos:</h1>
+			<div class="conteiner_acomp">
+				<div>
+					<label class="nome" for="acomp">Bolinha</label>
+					<label class="nome" for="acomp">Batata</label>
+				</div>
+
+				<div >
+					<input class="QUANT" type="number" id="P1" >
+					<input class="QUANT" type="number" id="P2" >
+				</div>
+			</div>
 
 
-
-				<input type="number" id="resul" name="valor" desabled>
+				<input type="hidden" id="resul" name="valor">
 
 				<div class="botao">
-					<button id="butao_enviar" onclick="calc()" type="button">FINALIZAR</button>
+					
 					<button id="butao_enviar" type="submit" name="Envio de comanda">ENVIAR</button>
 				</div> 
 
@@ -183,7 +205,7 @@
 						<form action="vale.php" method="post">
 							<input class="campoVale" type="text" name="nome_cliente" placeholder="Cliente" required>
 							<input class="campoVale" type="text" name="nome_garcon" placeholder="Garçom" required>
-							<input class="campoVale" type="number" name="valor" placeholder="Valor da comanda" required>
+							<input class="campoVale" type="number" step="0.01" name="valor" placeholder="Valor da comanda" required>
 							
 							<button id="butaoVale" type="submit">FAZER VALE</button>
 						</form>
@@ -206,11 +228,14 @@
 			</script>
 
 
+
+
 		<!--ÁREA DE PROCESSAMENTOS DOS DADOS-->
 			<script src="js/bootstrap.bundle.min.js"></script>
 
 			<script>
-				function calc() {
+				document.getElementById("butao_enviar");addEventListener("click", 
+					function calc() {
 
 			//ESSES SÃO OS DADOS DOS ESPETOS
 					var E1 = document.getElementById('E1').value;  parseInt(E1);
@@ -264,6 +289,9 @@
 					var A1 = document.getElementById('A1').value;  parseInt(A1);
 					var A2 = document.getElementById('A2').value;  parseInt(A2);
 
+					var P1 = document.getElementById('P1').value;  parseInt(P1);
+					var P2 = document.getElementById('P2').value;  parseInt(P2);
+
 
 					var Espetos = (E1 * 5 ) + (E2 * 5) + (E3 * 5) + (E4 * 5 ) + (E5 * 5) + (E6 * 5) + (E7 * 5 ) + (E8 * 8) + (E9 * 15);
 
@@ -276,19 +304,18 @@
 					
 					var Acomp = (A1 * 4) + (A2 * 5);
 
+					var Petisco = (P1 * 14) + (P2 * 14);
+
 
 					
-					var soma = Bebidas + Espetos + Whisky + Acomp;
+					var soma = Bebidas + Espetos + Whisky + Acomp + Petisco;
 
-					isNaN(soma);
-					parseFloat(soma);
+					document.getElementById('resul').innerHTML = "R$ " + soma.toFixed(2);
 
-					document.getElementById('resul').value = "R$ " + soma.toFixed(2);
-
-				}
+				});
 				
 				function chamar() {
-					window.open ("Trailer_da_avenida.html");
+					window.open ("Trailer_da_avenida.php");
 				}
 
 			</script>
