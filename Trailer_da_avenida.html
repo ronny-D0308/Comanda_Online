@@ -1,10 +1,4 @@
-<?php
-session_start();
 
-if(!isset($_SESSION["leggedin"]) || $_SESSION["leggedin"] !== true) {
-	
-}
-?>
 
 <DOCTYPE! html>
 <html lang="pt">
@@ -35,7 +29,7 @@ if(!isset($_SESSION["leggedin"]) || $_SESSION["leggedin"] !== true) {
 
             
 			<!--CAMPOS DOS ESPETOS-->
-                <hi class="itens">Espetos:</hi>
+                <h1 class="itens">Espetos:</h1>
 
                 <div class="conteiner_espetos">
                 	<div>
@@ -51,21 +45,21 @@ if(!isset($_SESSION["leggedin"]) || $_SESSION["leggedin"] !== true) {
                    	</div>
                
                 	<div>
-						<input name="quant1" class="QUANT" id="E1" type="number"  min="0">
-						<input name="quant2" class="QUANT" id="E2" type="number"  min="0">
-						<input name="quant3" class="QUANT" id="E3" type="number"  min="0">
-						<input name="quant4" class="QUANT" id="E4" type="number"  min="0">
-						<input name="quant5" class="QUANT" id="E5" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="E6" type="number"  min="0">
-						<input name="quant7" class="QUANT" id="E7" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="E8" type="number"  min="0">
-						<input name="quant7" class="QUANT" id="E9" type="number"  min="0">
+						<input name="E1" class="QUANT" id="E1" type="number"  min="0">
+						<input name="E2" class="QUANT" id="E2" type="number"  min="0">
+						<input name="E3" class="QUANT" id="E3" type="number"  min="0">
+						<input name="E4" class="QUANT" id="E4" type="number"  min="0">
+						<input name="E5" class="QUANT" id="E5" type="number"  min="0">
+						<input name="E6" class="QUANT" id="E6" type="number"  min="0">
+						<input name="E7" class="QUANT" id="E7" type="number"  min="0">
+						<input name="E8" class="QUANT" id="E8" type="number"  min="0">
+						<input name="E9" class="QUANT" id="E9" type="number"  min="0">
 		        	</div>	
                 </div>
 	<hr>
 				
 		<!--CAMPOS DAS BEBIDAS-->
-                <hi class="itens">Bebidas:</hi>
+                <h1 class="itens">Bebidas:</h1>
 
                 <div class="conteiner_bebidas">
                 	<div>
@@ -74,11 +68,11 @@ if(!isset($_SESSION["leggedin"]) || $_SESSION["leggedin"] !== true) {
 						<label class="nome">Refrigerante 600ml</label>
 						<label class="nome">Pitchulinha</label>
 						<label class="nome">Refrigerante Lata</label>
+						<label class="nome">Suco</label>
 						<label class="nome">Àgua com gás</label>
 						<label class="nome">Àgua sem gás</label>
 						<label class="nome">Àgua Fresh</label>
-
-						<h3>Cervejas</h3>
+					
 
 						<label class="nome">Heineken 600ml</label>
 						<label class="nome">Brahma Duplo Malte 600ml</label>
@@ -92,30 +86,32 @@ if(!isset($_SESSION["leggedin"]) || $_SESSION["leggedin"] !== true) {
 						<label class="nome">Skol Beats</label>
 						<label class="nome">Brahma Duplo Malte 300ml</label>
 						<label class="nome">Skol 300ml</label>
-                   	</div>
-               
-                	<div>
-						<input name="quant1" class="QUANT" id="B1" type="number"  min="0">
-						<input name="quant2" class="QUANT" id="B2" type="number"  min="0">
-						<input name="quant3" class="QUANT" id="B3" type="number"  min="0">
-						<input name="quant4" class="QUANT" id="B4" type="number"  min="0">
-						<input name="quant5" class="QUANT" id="B5" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B6" type="number"  min="0">
-						<input name="quant7" class="QUANT" id="B7" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B8" type="number"  min="0">
+					</div>
 
-						<input name="quant6" class="QUANT" id="B9" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B10" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B11" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B12" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B13" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B14" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B15" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B16" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B17" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B18" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B19" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="B20" type="number"  min="0">
+					<div>
+						
+						<input name="B1" class="QUANT" id="B1" type="number"  min="0">
+                   		<input name="B2" class="QUANT" id="B2" type="number"  min="0">
+						<input name="B3" class="QUANT" id="B3" type="number"  min="0">
+						<input name="B4" class="QUANT" id="B4" type="number"  min="0">
+						<input name="B5" class="QUANT" id="B5" type="number"  min="0">
+						<input name="B6" class="QUANT" id="B6" type="number"  min="0">
+						<input name="B7" class="QUANT" id="B7" type="number"  min="0">
+						<input name="B08" class="QUANT" id="B08" type="number"  min="0">
+						<input name="B9" class="QUANT" id="B9" type="number"  min="0">
+						
+						<input name="B10" class="QUANT" id="B10" type="number"  min="0">
+						<input name="B11" class="QUANT" id="B11" type="number"  min="0">
+						<input name="B12" class="QUANT" id="B12" type="number"  min="0">
+						<input name="B13" class="QUANT" id="B13" type="number"  min="0">
+						<input name="B14" class="QUANT" id="B14" type="number"  min="0">
+						<input name="B15" class="QUANT" id="B15" type="number"  min="0">
+						<input name="B16" class="QUANT" id="B16" type="number"  min="0">
+						<input name="B17" class="QUANT" id="B17" type="number"  min="0">
+						<input name="B18" class="QUANT" id="B18" type="number"  min="0">
+						<input name="B19" class="QUANT" id="B19" type="number"  min="0">
+						<input name="B20" class="QUANT" id="B20" type="number"  min="0">
+						<input name="B21" class="QUANT" id="B21" type="number"  min="0">
 		        	</div>	
                 </div>
 	<hr>
@@ -138,16 +134,16 @@ if(!isset($_SESSION["leggedin"]) || $_SESSION["leggedin"] !== true) {
 					</div>
 
 					<div >
-						<input name="quant1" class="QUANT" id="W1" type="number"  min="0">
-						<input name="quant2" class="QUANT" id="W2" type="number"  min="0">
-						<input name="quant3" class="QUANT" id="W3" type="number"  min="0">
-						<input name="quant4" class="QUANT" id="W4" type="number"  min="0">
-						<input name="quant5" class="QUANT" id="W5" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="W6" type="number"  min="0">
-						<input name="quant7" class="QUANT" id="W7" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="W8" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="W9" type="number"  min="0">
-						<input name="quant6" class="QUANT" id="W10" type="number"  min="0">
+						<input name="W1" class="QUANT" id="W1" type="number"  min="0">
+						<input name="W2" class="QUANT" id="W2" type="number"  min="0">
+						<input name="W3" class="QUANT" id="W3" type="number"  min="0">
+						<input name="W4" class="QUANT" id="W4" type="number"  min="0">
+						<input name="W5" class="QUANT" id="W5" type="number"  min="0">
+						<input name="W6" class="QUANT" id="W6" type="number"  min="0">
+						<input name="W7" class="QUANT" id="W7" type="number"  min="0">
+						<input name="W8" class="QUANT" id="W8" type="number"  min="0">
+						<input name="W9" class="QUANT" id="W9" type="number"  min="0">
+						<input name="W10" class="QUANT" id="W10" type="number"  min="0">
 					</div>
 				</div>
 
@@ -162,8 +158,8 @@ if(!isset($_SESSION["leggedin"]) || $_SESSION["leggedin"] !== true) {
 				</div>
 
 				<div >
-					<input class="QUANT" type="number" id="A1" >
-					<input class="QUANT" type="number" id="A2" >
+					<input class="QUANT" type="number" id="A1" name="A1">
+					<input class="QUANT" type="number" id="A2" name="A2">
 				</div>
 			</div>
 	<hr>
@@ -178,17 +174,15 @@ if(!isset($_SESSION["leggedin"]) || $_SESSION["leggedin"] !== true) {
 				</div>
 
 				<div >
-					<input class="QUANT" type="number" id="P1" >
-					<input class="QUANT" type="number" id="P2" >
+					<input class="QUANT" type="number" id="P1" name="P1">
+					<input class="QUANT" type="number" id="P2" name="P2">
 				</div>
 			</div>
 
 
-				<input type="hidden" id="resul" name="valor">
 
 				<div class="botao">
-					
-					<button id="butao_enviar" type="submit" name="Envio de comanda">ENVIAR</button>
+					<button id="butao_enviar" type="submit" name="Envio_de_comanda">ENVIAR</button>
 				</div> 
 
         </form>
@@ -228,92 +222,7 @@ if(!isset($_SESSION["leggedin"]) || $_SESSION["leggedin"] !== true) {
 			</script>
 
 
-
-
-		<!--ÁREA DE PROCESSAMENTOS DOS DADOS-->
-			<script src="js/bootstrap.bundle.min.js"></script>
-
 			<script>
-				document.getElementById("butao_enviar");addEventListener("click", 
-					function calc() {
-
-			//ESSES SÃO OS DADOS DOS ESPETOS
-					var E1 = document.getElementById('E1').value;  parseInt(E1);
-					var E2 = document.getElementById('E2').value;  parseInt(E2);
-					var E3 = document.getElementById('E3').value;  parseInt(E3);
-					var E4 = document.getElementById('E4').value;  parseInt(E4);
-					var E5 = document.getElementById('E5').value;  parseInt(E5);
-					var E6 = document.getElementById('E6').value;  parseInt(E6);
-					var E7 = document.getElementById('E7').value;  parseInt(E7);
-					var E8 = document.getElementById('E8').value;  parseInt(E8);
-					var E9 = document.getElementById('E9').value;  parseInt(E9);
-
-			//ESSES SÃO OS DADOS DAS BEBIDAS
-
-					var B1 = document.getElementById('B1').value;  parseInt(B1);
-					var B2 = document.getElementById('B2').value;  parseInt(B2);
-					var B3 = document.getElementById('B3').value;  parseInt(B3);
-					var B4 = document.getElementById('B4').value;  parseInt(B4);
-					var B5 = document.getElementById('B5').value;  parseInt(B5);
-					var B6 = document.getElementById('B6').value;  parseInt(B6);
-					var B7 = document.getElementById('B7').value;  parseInt(B7);
-					var B8 = document.getElementById('B8').value;  parseInt(B8);
-					var B9 = document.getElementById('B9').value;  parseInt(B9); 
-					var B10 = document.getElementById('B10').value;  parseInt(B10);
-					var B11 = document.getElementById('B11').value;  parseInt(B11);
-					var B12 = document.getElementById('B12').value;  parseInt(B12);
-					var B13 = document.getElementById('B13').value;  parseInt(B13);
-					var B14 = document.getElementById('B14').value;  parseInt(B14);
-					var B15 = document.getElementById('B15').value;  parseInt(B15);
-					var B16 = document.getElementById('B16').value;  parseInt(B16);
-					var B17 = document.getElementById('B17').value;  parseInt(B17);
-					var B18 = document.getElementById('B18').value;  parseInt(B18);
-					var B19 = document.getElementById('B19').value;  parseInt(B19);
-					var B20 = document.getElementById('B20').value;  parseInt(B10);
-
-			//ESSES SÃO OS DADOS WHISKYS
-
-					var W1 = document.getElementById('W1').value;  parseInt(W1);
-					var W2 = document.getElementById('W2').value;  parseInt(W2);
-					var W3 = document.getElementById('W3').value;  parseInt(W3);
-					var W4 = document.getElementById('W4').value;  parseInt(W4);
-					var W5 = document.getElementById('W5').value;  parseInt(W5);
-					var W6 = document.getElementById('W6').value;  parseInt(W6);
-					var W7 = document.getElementById('W7').value;  parseInt(W7);
-					var W8 = document.getElementById('W8').value;  parseInt(W8);
-					var W9 = document.getElementById('W9').value;  parseInt(W9);
-					var W10 = document.getElementById('W10').value;  parseInt(W10);
-
-			//ESSES SÃO OS DADOS DOS ACOMPANHANTES
-
-					var A1 = document.getElementById('A1').value;  parseInt(A1);
-					var A2 = document.getElementById('A2').value;  parseInt(A2);
-
-					var P1 = document.getElementById('P1').value;  parseInt(P1);
-					var P2 = document.getElementById('P2').value;  parseInt(P2);
-
-
-					var Espetos = (E1 * 5 ) + (E2 * 5) + (E3 * 5) + (E4 * 5 ) + (E5 * 5) + (E6 * 5) + (E7 * 5 ) + (E8 * 8) + (E9 * 15);
-
-					var Bebidas = (B1 * 8 ) + (B2 * 13) + (B3 * 7) + (B4 * 3) + (B5 * 5) + (B6 * 3) + (B7 * 2) + (B8 * 5) +
-					              (B9 * 17) + (B10 * 12) + (B11 * 10) + (B12 * 10)+ (B13 * 8) + (B14 * 8)+ (B15 * 8) + (B16 * 10) +
-								  (B17 * 10) + (B18 * 10)+ (B19 * 5) + (B20 * 5);
-								 
-					var Whisky = (W1 * 10) + (W2 * 15) + (W3 * 7) + (W4 * 8) + (W5 * 12) + (W6 * 18) + (W7 * 2) + (W8 * 2) +
-					              (W9 * 4) + (W10 * 4);
-					
-					var Acomp = (A1 * 4) + (A2 * 5);
-
-					var Petisco = (P1 * 14) + (P2 * 14);
-
-
-					
-					var soma = Bebidas + Espetos + Whisky + Acomp + Petisco;
-
-					document.getElementById('resul').innerHTML = "R$ " + soma.toFixed(2);
-
-				});
-				
 				function chamar() {
 					window.open ("Trailer_da_avenida.php");
 				}
