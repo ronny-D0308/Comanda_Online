@@ -1,10 +1,4 @@
-<?php   
-        session_start();
-
-        if(!isset($_SESSION["leggedin"]) || $_SESSION["leggedin"] !== true) {
-            
-        }
-
+<?php 
         $bdhost = 'localhost';
         $bdUsername = 'root';
         $bdPassword = '';
@@ -86,11 +80,15 @@
         }
         #printFrame{
             display:none;
+            width: 50px;
+            height:70px;
+            text-align:center;
         }
         #imprimir{
-            background: transparent;
-            border: none;
-            
+            text-align:center;
+            margin:auto 0;
+            margin-top:30px;
+            cursor: pointer;
         }
         #butao_impressao{
             text-align:center;
@@ -123,7 +121,7 @@
                     if(isset($_GET['busca'])) : ?>
                         <table class="tabela">
                             <tr>
-                                <th class="coluna" >Nome</th>
+                                <th class="coluna" >Nome do cliente</th>
                                 <th class="coluna" >Garçon</th>
                                 <th class="coluna" >Mesa</th>
                                 <th class="coluna" >Valor</th>
@@ -154,26 +152,9 @@
                 <?php endif;?>
             </span>
                 
-            <div id="butao_impressao">
-                <iframe id="printFrame" name="printFrame"> </iframe>
-
-                    <button type="submit" id="imprimir" onClick="impressao()"> <img src="imagens/impressora.png"> </button>
-
-                        <script>
-                            function impressao() {
-                                var tabela = document.getElementById('clientes').innerHTML;
-                                var print =  document.getElementById('printFrame').contentWindow;
-
-                                printFrame.document.open();
-
-                                printFrame.document.write('<html><head><title>Print</title></head><body>' + tabela +'</body></html>');
-
-                                print.document.close();
-                                print.focus();
-                                print.print();
-                            }
-                    </script>
-                </div>
+            <div id="imprimir">
+                <button type="submit" > IMPRIMIR COMANDA </button>
+            </div>
     </section>
 
 
