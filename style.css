@@ -44,10 +44,9 @@ h1{
 	justify-content:space-between;
 	padding:20px;
 }
-.conteiner_bebidas{
-    display:flex;
-    justify-content: space-between;
-	padding:20px;
+.conteiner_bebidass{
+    display: flex;
+    
 }
 
 .conteiner_acomp{
@@ -112,7 +111,7 @@ main{
 }
 
 .QUANT{
-    margin: 0px 0px 7px 20px;
+    margin: 0px 0px 0px 20px;
     display: flex;
     background: transparent;
     border: 0px;
@@ -167,15 +166,6 @@ main{
 .butao_vale{
     text-align: center;
     margin: 40px 0px 40px 0px;
-}
-
-h3{
-    font-size: 20px;
-    margin: 20px 0px 20px 0px;
-}
-
-#B8{
-    margin-bottom: 70px;
 }
 
 .oculto{
