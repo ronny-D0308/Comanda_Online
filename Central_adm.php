@@ -33,56 +33,26 @@
             background-color:#da6c22;
         }
 
-        h1{
+        .title{
             font-size: 50px;
             color: white;
             text-align: center;
             margin: 30px 0px 40px 0px;
             letter-spacing: 5px;
         }
-
-        .conteiner_form{
+        h3{
+            font-size:40px;
+            color: white;
             text-align: center;
+            margin: 30px 0px 40px 0px;
+            letter-spacing: 5px;
         }
-        .campo{
-            height:40px;
-            outline: none;
-            padding-left: 10px;
-            font-size: 20px;
-        }
-        .conteiner_tabela{
-            display:flex;
-            justify-content:center; 
-            margin-top: 40px;  
-        }
-        .tabela{
-            background-color: #CDC8B1;
-            width:400px;
-            text-align:left;
-            border-radius:4px;
-            padding:5px;
-        }
-        .coluna{
-            font-size:20px;
-        }
-        form{
-            display:flex;
-            gap: 20px;
-            justify-content:center;
+        
+        .conteiner-tabela{
+            margin: 0 auto;
         }
         .sessão{
             margin-bottom:300px;
-        }
-        #grafico{
-            width: 700px;
-            height:700px;
-            margin:0 auto;
-        }
-        #printFrame{
-            display:none;
-            width: 50px;
-            height:70px;
-            text-align:center;
         }
         #imprimir{
             text-align:center;
@@ -90,10 +60,48 @@
             margin-top:30px;
             cursor: pointer;
         }
-        #butao_impressao{
+        .butoes{
             text-align:center;
-            margin-top:20px;
+            margin-top:30px;
         }
+        .conteiner-table{
+            display:flex;
+            justify-content:center; 
+            margin-top: 40px;
+        }
+        .table{
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px 15px 0 0;
+            margin: 0 auto;
+            width: 600px;
+            text-align: center;
+            font-size:20px;
+        }
+        table th{
+            color: white;
+            text-decoration: underline;
+        }
+        .acoes{
+            text-decoration:none;
+            color: white;
+            margin-left:10px;
+            font-weight: bold;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #tabela, #tabela * {
+                visibility: visible;
+            }
+            #tabela{
+                position: fixed;
+                left:0;
+                top:0;
+            }
+        }
+        
     </style>
 
 </head>
@@ -103,58 +111,66 @@
 <!--LOCAL DE BUSCA DE INFOMAÇÕES DOS CLIENTES-->
 
     <section class="sessão">
+            <h1 class="title">Trailer da Avenida</h1>
 
-            <h1>Área Administrativa</h1>
-                <div class="conteiner_form">
-                    <form method="GET" action="">
+            <h3>Área Administrativa</h3>
 
-                        <input class="campo" type="text" name="busca">
-                        
-                        <button type="submit"> <img src="imagens/lupa.png"> </button>
-                    </form>
-                </div>
-
-
-        <!--PROCESSAMENTO DOS DADOS-->
-            <span class="conteiner_tabela"  id="clientes">
+            <div class="conteiner-table">
                 <?php
-                    if(isset($_GET['busca'])) : ?>
-                        <table class="tabela">
-                            <tr>
-                                <th class="coluna" >Nome do cliente</th>
-                                <th class="coluna" >Garçon</th>
-                                <th class="coluna" >Mesa</th>
-                                <th class="coluna" >Valor</th>
-                            </tr>
-                            <?php
-                            $nome = $_GET['busca'];
-
-                            $comanda = "SELECT Nome_cliente, Garcon, Numero_mesa, Valor_comanda FROM cliente
-                    WHERE Nome_cliente LIKE '%$nome%'  ";
-
-                            $result = $conn->query($comanda);
-
-                            if($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo "<tr><td>" . $row["Nome_cliente"]."</td><td>" . 
-                                    $row["Garcon"]. "</td><td>"  . 
-                                    $row["Numero_mesa"]. "</td><td>" .
-                                    $row["Valor_comanda"]. "</td></tr>";
-                        }
-                            } else {
-                                echo "<tr><td> 0 resultados </td></tr>";
-                        }
+                    $bdhost = 'localhost';
+                    $bdUsername = 'root';
+                    $bdPassword = '';
+                    $bdName = 'bdsecund';
                     
-                    $conn->close();
+                    $conn = new mysqLi($bdhost, $bdUsername, $bdPassword, $bdName);
+                    
+                    if($conn -> connect_error) {
+                    die("Conexão falhou: ". $conn -> connect_error);
+                    }
+                    
+                    $sql = "SELECT Nome_cliente, Garcon, Valor_comanda, Data_compra FROM cliente";
+                    $result = $conn->query($sql);
                 ?>
 
-                </table>
-                <?php endif;?>
-            </span>
-                
+                    <table class="table" id="tabela">
+                        <thead>
+                            <tr>
+                                <th class="coluna" >Nome</th>
+                                <th class="coluna" >Garçon</th>
+                                <th class="coluna" >Data</th>
+                                <th class="coluna" >Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                    
+                            if($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc()) {
+                                        echo "<tr><td>" . $row["Nome_cliente"]."</td><td>" . 
+                                        $row["Garcon"]. "</td><td>"  . 
+                                        $row["Data_compra"]. "</td><td>" .
+                                        $row["Valor_comanda"]. "</td></tr>";
+                                    }
+                                } else {
+                                    echo "<tr><td> 0 resultados </td></tr>";
+                                }
+
+                            $conn->close();
+
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+
             <div id="imprimir">
-                <button type="submit" > IMPRIMIR COMANDA </button>
+                <button onclick="imprimir()"> IMPRIMIR COMANDA </button>
             </div>
+
+            <script>
+                function imprimir() {
+                    window.print();
+                }
+            </script>
     </section>
 
 
@@ -162,95 +178,67 @@
 <!--LOCAL DE BUSCA DE COMANDAS PENDENTES-->
 
     <section class="sessão">
-        <h1>Comandas pendentes</h1>
-            <div class="conteiner_form">
-                        <form method="GET" action="">
+        <h1 class="title">Comandas pendentes</h1>
+               
+                <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $bdname = "bdsecund";
 
-                            <input class="campo" type="text" name="buscaVale">
-                            
-                            <button type="submit"> <img src="imagens/lupa.png"> </button>
-                        </form>
-            </div>
-            
-            <span class="conteiner_tabela">
-            <?php
-                    if(isset($_GET['buscaVale'])) : ?>
-                        <table class="tabela">
-                            <tr>
-                                <th class="coluna" >Nome</th>
-                                <th class="coluna" >Garçon</th>
-                                <th class="coluna" >Data</th>
-                                <th class="coluna" >Valor</th>
-                            </tr>
-                            <?php
-                            $nome = $_GET['buscaVale'];
+                    $conn = new mysqli( $servername, $username, $password, $bdname);
 
-                            $comanda = "SELECT Nome_cliente, Garcon, Valor_comanda, Data_compra FROM vale
-                    WHERE Nome_cliente LIKE '%$nome%'  ";
+                    if($conn->connect_error) {
+                        die("Erro na conexão". $conn->connect_error);
+                    }
 
-                            $result = $conn->query($comanda);
-
-                            if($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo "<tr><td>" . $row["Nome_cliente"]."</td><td>" . 
-                                    $row["Garcon"]. "</td><td>"  . 
-                                    $row["Data_compra"]. "</td><td>" .
-                                    $row["Valor_comanda"]. "</td></tr>";
-                        }
-                            } else {
-                                echo "<tr><td> 0 resultados </td></tr>";
-                        }
-                    
-                 
+                    $sql = "SELECT Nome_cliente, Garcon, Valor_comanda, Data_compra, Id FROM vale";
+                    $result = $conn->query($sql); 
                 ?>
 
-                </table>
-                <?php endif;?>
+            <div class="container-tabela">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="coluna" >Nome</th>
+                            <th class="coluna" >Garçon</th>
+                            <th class="coluna" >Data</th>
+                            <th class="coluna" >Valor</th>
+                            <th class="coluna" >Id</th>
+                            <th class="coluna" >...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            if($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo "<tr>";
+                                    echo "<td>".$row['Nome_cliente']."</td>";
+                                    echo "<td>".$row['Garcon']."</td>";
+                                    echo "<td>".$row['Data_compra']."</td>";
+                                    echo "<td>".$row['Valor_comanda']."</td>";
+                                    echo "<td>".$row['Id']."</td>";
+                                    echo "<td>
+                                        <a class='acoes' id='Editar' href='edit.php?Id=$row[Id]' title='Editar'> EDITAR </a>
+                
+                                        <a class='acoes' id='Deletar' href='delete.php?Id=$row[Id]' title='Deletar'> DELETAR </a>
+                                            </td>";
+                                    echo "</tr>";
+                                    }
+                            } else {
+                                    echo "<tr><td> 0 resultados </td></tr>";
+                            }
 
-            </span>
-            
-            <div class="butoes">
-                <button id="excluir" name="excluir"> EXCLUIR </button>
-                <button id="alterar" name="excluir"> ALTERAR </button>
-                <button></button>
+                            $conn->close();
+
+                        ?>
+                    </tbody>
+                </table>
             </div>
+
     </section>
     
 
 <!--LOCAL DO GRÁFICO DE ATUALIDADES DA EMPRESA-->
-
-    <section class="sessão">
-                <?php
-                    $bdhost = 'localhost';
-                    $bdUsername = 'root';
-                    $bdPassword = '';
-                    $bdName = 'bdsecund';
-            
-                    $conn = new mysqLi($bdhost, $bdUsername, $bdPassword, $bdName);
-            
-                    if($conn -> connect_error) {
-                    die("Conexão falhou: ". $conn -> connect_error);
-                    }
-
-                    $comanda = "SELECT SUM(Valor_comanda) AS total FROM vale";
-
-                    $result = $conn->query($comanda);
-
-                    $total = [];
-                    $clientes = [];
-
-                    if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                            $total[] = $row['total'];
-                        }
-                    } else {
-                        echo '0 resultado';
-                    }
-                    
-                    $conn->close();
-
-                ?>
-
-    </section>
 </body>
 </html>
