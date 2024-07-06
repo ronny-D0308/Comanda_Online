@@ -1,4 +1,10 @@
-
+<?php
+	/*session_start();
+	if(!isset($_SESSION["Nome_usuario"])) {
+		header('Location:Validacao.html');
+		exit;
+	}*/
+?>
 
 <DOCTYPE! html>
 <html lang="pt">
@@ -6,15 +12,225 @@
     <meta charset="UTF-8">
     <meta name="viewport"  content="width=device-width, initial-scale=1.0">
     <title>Trailer da Avenida</title> 
-    <link rel="stylesheet" type="text/css" href="style.css">
+
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Kreon:wght@300..700&display=swap');
+
+*{
+    font-family: 'kreon','Arial';
+    margin: 0;
+    color: white;
+}
+
+body{
+    background-color:#da6c22;
+}
+
+
+h1{
+    margin: 10px;
+    margin-bottom: 20px;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    font-family: 'kreon','Arial';
+}
+.adicionar{
+    text-align: center;
+    cursor: pointer;
+}
+
+#menu ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.conteiner{
+    margin-bottom: 30px;
+}
+
+.informs{
+    text-align: center;
+}
+
+.conteiner_espetos{
+	display:flex;
+	justify-content:space-between;
+	padding:20px;
+	flex-wrap:wrap;
+	row-gap:10px;
+}
+.conteiner_bebidas{
+    display:flex;
+	justify-content:space-between;
+	padding:20px;
+	flex-wrap:wrap;
+	row-gap:10px;
+}
+
+.conteiner_acomp{
+    display:flex;
+	justify-content:space-between;
+	padding:20px;
+	flex-wrap:wrap;
+	row-gap:10px;
+}
+
+.conteiner_whisky{
+    display:flex;
+	justify-content:space-between;
+	padding:20px;
+	flex-wrap:wrap;
+	row-gap:10px;
+}
+
+.botao{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+#nome_cliente{
+    margin: 20px 15px 30px 15px;
+    display: inline;
+    background: transparent;
+    border: 0px;
+    color:white;
+    outline: none;
+    border-bottom: 3px white solid;
+    font-size: 20px;
+    width: 150px;
+	text-align:center;
+}
+::-webkit-input-placeholder{
+    color:white;
+    opacity: 50%;
+}
+.QUANT{
+    display: flex;
+    background: transparent;
+    border: 0px;
+    color: white;
+    outline: none;
+    border-bottom: 3px white solid;
+    font-size:15px ;
+	width:60px;
+}
+
+.nome{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 25px;
+}
+
+.itens{
+    font-size: 30px;
+    margin: 30px 0px 10px 20px;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 7%;
+}
+#butao_enviar{
+    height: 35px;
+    width: 120px;
+    background-color:#6e2e03;
+    color: aliceblue;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: bolder;
+    justify-content: center;
+    border: 0;
+    cursor: pointer;
+}
+.conteiner-produto{
+	text-align: center;
+	background: rgba(0, 0, 0, 0.3);
+	width:auto;
+	border-radius:5px;
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+	padding:5px;
+}
+
+#butao_vale{
+    width:150px;
+    height: 35px;
+    background-color:#6e2e03;
+    color: aliceblue;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: bolder;
+    border: 0;
+    cursor: pointer;
+}
+
+.butao_vale{
+    text-align: center;
+    margin: 40px 0px 40px 0px;
+}
+
+.oculto{
+    display: flex;
+    justify-content: center;
+}
+
+#conteudoOculto{
+    display: none;
+    text-align: center;
+    background-color: #6e2e03;
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+    border: solid 3px black;
+    padding: 15px;
+}
+
+.campoVale{
+    background: transparent;
+    border: 0px;
+    color: white;
+    outline: none;
+    border-bottom: 3px white solid;
+    width: 160px;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+#butaoVale{
+    width:150px;
+    height: 35px;
+    background-color:#cf590a;
+    color: aliceblue;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: bolder;
+    border: 0;
+    cursor: pointer;
+}
+
+@media screen and (min-width:300px){
+    .button{
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
+	
+}
+	</style>
+
 </head>
 
 
 <body>
     <div class="conteiner">
         <h1>Trailer da Avenida</h1>
+		<a class="sair" style="text-decoration:none; margin:0px 0px 0px 20px;" href="Logout.php"> SAIR </a>
 		
-		<div class="adcionar">
+		<div class="adicionar">
 			<img src="imagens/adicionar.png" onclick="chamar()" width="40px" height="40px">
 		</div>
 
@@ -32,29 +248,45 @@
                 <h1 class="itens">Espetos:</h1>
 
                 <div class="conteiner_espetos">
-                	<div>
+
+                	<div class="conteiner-produto">
 						<label class="nome">Gado</label>
-						<label class="nome">Porco</label>
-						<label class="nome">Frango</label>
-						<label class="nome">Linguiça</label>
-						<label class="nome">Calabresa</label>
-						<label class="nome">Queijo</label>
-						<label class="nome">Coração de Frango</label>
-						<label class="nome">Maminha</label>
-						<label class="nome">Picanha</label>
-                   	</div>
-               
-                	<div>
 						<input name="E1" class="QUANT" id="E1" type="number"  min="0">
+					</div>
+
+					<div class="conteiner-produto">
+						<label class="nome">Porco</label>
 						<input name="E2" class="QUANT" id="E2" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Frango</label>
 						<input name="E3" class="QUANT" id="E3" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Linguiça</label>
 						<input name="E4" class="QUANT" id="E4" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Calabresa</label>
 						<input name="E5" class="QUANT" id="E5" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Queijo</label>
 						<input name="E6" class="QUANT" id="E6" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Coração de Frango</label>
 						<input name="E7" class="QUANT" id="E7" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Maminha</label>
 						<input name="E8" class="QUANT" id="E8" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Picanha</label>
 						<input name="E9" class="QUANT" id="E9" type="number"  min="0">
-		        	</div>	
+                   	</div>
+
                 </div>
 	<hr>
 				
@@ -62,57 +294,95 @@
                 <h1 class="itens">Bebidas:</h1>
 
                 <div class="conteiner_bebidas">
-                	<div>
+					<div class="conteiner-produto">
 						<label class="nome">Refrigerante 1LT</label>
+						<input name="B1" class="QUANT" id="B1" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Refrigerante 2LT</label>
+						<input name="B2" class="QUANT" id="B2" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Refrigerante 600ml</label>
+						<input name="B3" class="QUANT" id="B3" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Pitchulinha</label>
+						<input name="B4" class="QUANT" id="B4" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Refrigerante Lata</label>
+						<input name="B5" class="QUANT" id="B5" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Suco</label>
+						<input name="B6" class="QUANT" id="B6" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Àgua com gás</label>
+						<input name="B7" class="QUANT" id="B7" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Àgua sem gás</label>
+						<input name="B08" class="QUANT" id="B08" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Àgua Fresh</label>
-					
-
+						<input name="B9" class="QUANT" id="B9" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Heineken 600ml</label>
+						<input name="B10" class="QUANT" id="B10" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Brahma Duplo Malte 600ml</label>
+						<input name="B11" class="QUANT" id="B11" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Heineken Long Neck</label>
+						<input name="B12" class="QUANT" id="B12" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Corona Long Neck</label>
+						<input name="B13" class="QUANT" id="B13" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Spaten Long Neck</label>
+						<input name="B14" class="QUANT" id="B14" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Budweiser Long Neck</label>
+						<input name="B15" class="QUANT" id="B15" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Stella Artois Long Neck</label>
+						<input name="B16" class="QUANT" id="B16" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Ice Smirnoff</label>
+						<input name="B17" class="QUANT" id="B17" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Ice Cabaré</label>
+						<input name="B18" class="QUANT" id="B18" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Skol Beats</label>
+						<input name="B19" class="QUANT" id="B19" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Brahma Duplo Malte 300ml</label>
+						<input name="B20" class="QUANT" id="B20" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
 						<label class="nome">Skol 300ml</label>
+						<input name="B21" class="QUANT" id="B21" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Red Bull</label>
+						<input name="B22" class="QUANT" id="B22" type="number"  min="0">
 					</div>
 
-					<div>
-						
-						<input name="B1" class="QUANT" id="B1" type="number"  min="0">
-                   		<input name="B2" class="QUANT" id="B2" type="number"  min="0">
-						<input name="B3" class="QUANT" id="B3" type="number"  min="0">
-						<input name="B4" class="QUANT" id="B4" type="number"  min="0">
-						<input name="B5" class="QUANT" id="B5" type="number"  min="0">
-						<input name="B6" class="QUANT" id="B6" type="number"  min="0">
-						<input name="B7" class="QUANT" id="B7" type="number"  min="0">
-						<input name="B08" class="QUANT" id="B08" type="number"  min="0">
-						<input name="B9" class="QUANT" id="B9" type="number"  min="0">
-						
-						<input name="B10" class="QUANT" id="B10" type="number"  min="0">
-						<input name="B11" class="QUANT" id="B11" type="number"  min="0">
-						<input name="B12" class="QUANT" id="B12" type="number"  min="0">
-						<input name="B13" class="QUANT" id="B13" type="number"  min="0">
-						<input name="B14" class="QUANT" id="B14" type="number"  min="0">
-						<input name="B15" class="QUANT" id="B15" type="number"  min="0">
-						<input name="B16" class="QUANT" id="B16" type="number"  min="0">
-						<input name="B17" class="QUANT" id="B17" type="number"  min="0">
-						<input name="B18" class="QUANT" id="B18" type="number"  min="0">
-						<input name="B19" class="QUANT" id="B19" type="number"  min="0">
-						<input name="B20" class="QUANT" id="B20" type="number"  min="0">
-						<input name="B21" class="QUANT" id="B21" type="number"  min="0">
-		        	</div>	
                 </div>
 	<hr>
 
@@ -120,29 +390,44 @@
 
 				<h1 class="itens">Bebida Quente:</h1>
 				<div class="conteiner_whisky">
-					<div>
+					<div class="conteiner-produto">
 						<label class="nome">Red Label</label>
-						<label class="nome">Black Label</label>
-						<label class="nome">Buchanan's</label>
-						<label class="nome">Black White</label>
-						<label class="nome">Old Par 12 Anos</label>
-						<label class="nome">Old Par 18 Anos</label>
-						<label class="nome">Ballantine</label>
-						<label class="nome">Cachaça Amarela</label>
-						<label class="nome">Cachaça Empalhada</label>
-						<label class="nome">Dreher</label>
-					</div>
-
-					<div >
 						<input name="W1" class="QUANT" id="W1" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Black Label</label>
 						<input name="W2" class="QUANT" id="W2" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Buchanan's</label>
 						<input name="W3" class="QUANT" id="W3" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Black White</label>
 						<input name="W4" class="QUANT" id="W4" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Old Par 12 Anos</label>
 						<input name="W5" class="QUANT" id="W5" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Old Par 18 Anos</label>
 						<input name="W6" class="QUANT" id="W6" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Ballantine</label>
 						<input name="W7" class="QUANT" id="W7" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Cachaça Amarela</label>
 						<input name="W8" class="QUANT" id="W8" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">						
+						<label class="nome">Cachaça Empalhada</label>
 						<input name="W9" class="QUANT" id="W9" type="number"  min="0">
+					</div>
+					<div class="conteiner-produto">
+						<label class="nome">Dreher</label>
 						<input name="W10" class="QUANT" id="W10" type="number"  min="0">
 					</div>
 				</div>
@@ -152,13 +437,12 @@
 
 			<h1 class="itens">Acompanhante:</h1>
 			<div class="conteiner_acomp">
-				<div>
+				<div class="conteiner-produto">
 					<label class="nome" for="acomp">Baião</label>
-					<label class="nome" for="acomp">Arroz Agrega</label>
-				</div>
-
-				<div >
 					<input class="QUANT" type="number" id="A1" name="A1">
+				</div>
+				<div class="conteiner-produto">
+					<label class="nome" for="acomp">Arroz Agrega</label>
 					<input class="QUANT" type="number" id="A2" name="A2">
 				</div>
 			</div>
@@ -168,13 +452,12 @@
 
 		<h1 class="itens">Petiscos:</h1>
 			<div class="conteiner_acomp">
-				<div>
+				<div class="conteiner-produto">
 					<label class="nome" for="acomp">Bolinha</label>
-					<label class="nome" for="acomp">Batata</label>
-				</div>
-
-				<div >
 					<input class="QUANT" type="number" id="P1" name="P1">
+				</div>
+				<div class="conteiner-produto">
+					<label class="nome" for="acomp">Batata</label>
 					<input class="QUANT" type="number" id="P2" name="P2">
 				</div>
 			</div>
