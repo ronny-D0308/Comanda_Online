@@ -1,4 +1,5 @@
 <?php 
+/*
         $bdhost = 'localhost';
         $bdUsername = 'root';
         $bdPassword = '';
@@ -9,7 +10,7 @@
         if($conn -> connect_error) {
         die("Conexão falhou: ". $conn -> connect_error);
         }
-
+*/
 ?>
 
 
@@ -31,6 +32,35 @@
         }
         body{
             background-color:#da6c22;
+        }
+        .container {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+        }
+        .menu {
+           position: relative;
+           width: 60px;
+           height: 60px;
+           display: flex;
+           overflow: hidden;
+           justify-content: space-evenly;
+           align-items: center;
+           border-radius: 50px;
+           box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .menu div {
+           padding-left: 10px;
+        }
+        .menu:hover {
+           width: 340px;
+           transition-duration: 2s;
+        }
+        a {
+            text-decoration: none;
+            font-size: 20px;
+            color: black;
         }
 
         .title{
@@ -111,26 +141,31 @@
 <!--LOCAL DE BUSCA DE INFOMAÇÕES DOS CLIENTES-->
 
     <section class="sessão">
+
+    <div class=″container″>
+        <div class="menu">
+
+            <div class=″icon″><svg class="svg-profile" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960"
+width="40px" fill="#000000"><path d="M480-480q-66 0-113-47t-47-113q0-66
+47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34
+17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5
+43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56
+0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0
+56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5
+56.5T480-560Zm0-80Zm0 400Z" /></svg>
+            </div>
+
+                <div class=″icon″> <a href="estoque.php"> Estoque </a> </div>
+
+                <div class=″icon″> <a href="#"> Home </a> </div>
+
+            </div>
+        </div>
             <h1 class="title">Trailer da Avenida</h1>
 
             <h3>Área Administrativa</h3>
 
             <div class="conteiner-table">
-                <?php
-                    $bdhost = 'localhost';
-                    $bdUsername = 'root';
-                    $bdPassword = '';
-                    $bdName = 'bdsecund';
-                    
-                    $conn = new mysqLi($bdhost, $bdUsername, $bdPassword, $bdName);
-                    
-                    if($conn -> connect_error) {
-                    die("Conexão falhou: ". $conn -> connect_error);
-                    }
-                    
-                    $sql = "SELECT Nome_cliente, Garcon, Valor_comanda, Data_compra FROM cliente";
-                    $result = $conn->query($sql);
-                ?>
 
                     <table class="table" id="tabela">
                         <thead>
@@ -179,22 +214,6 @@
 
     <section class="sessão">
         <h1 class="title">Comandas pendentes</h1>
-               
-                <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $bdname = "bdsecund";
-
-                    $conn = new mysqli( $servername, $username, $password, $bdname);
-
-                    if($conn->connect_error) {
-                        die("Erro na conexão". $conn->connect_error);
-                    }
-
-                    $sql = "SELECT Nome_cliente, Garcon, Valor_comanda, Data_compra, Id FROM vale";
-                    $result = $conn->query($sql); 
-                ?>
 
             <div class="container-tabela">
                 <table class="table">
